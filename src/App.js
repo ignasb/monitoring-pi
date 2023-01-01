@@ -1,7 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import * as React from 'react';
 
 function App() {
+  const fetchPiUsageData = () => {
+    fetch('http://192.168.50.11:9000/testAPI')
+      .then(res => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  React.useEffect(() => {
+    fetchPiUsageData();
+  });
+
   return (
     <div className="App">
       <header className="App-header">
