@@ -1,13 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 import * as React from 'react';
+import Widget from './components/widget/Widget';
 
 function App() {
+  const [temperatureData, setTemperatureData] = React.useState({ title: 'Pi Temperature', headers: [], data: [] });
+
   const fetchPiUsageData = () => {
-    fetch('http://192.168.50.11:9000/testAPI')
+    fetch('http://192.168.50.11:9000/metrics/temperature')
       .then(res => res.json())
       .then((data) => {
-        console.log(data);
+        const fetchedTempData = {
+            ...temperatureData,
+            headers: [
+                {key: 'ts', title: 'Timestamp'},
+                {key: 'value', title: 'Temperature'}
+            ],
+            data
+        };
+
+        setTemperatureData(fetchedTempData);
       })
       .catch((error) => {
         console.log(error);
@@ -16,25 +28,10 @@ function App() {
 
   React.useEffect(() => {
     fetchPiUsageData();
-  });
+  }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Widget views={['table']} data={temperatureData} />
   );
 }
 

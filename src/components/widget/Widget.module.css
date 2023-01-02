@@ -1,0 +1,12 @@
+.widget {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.widgetToolbar {
+  color: gray;
+}
+
+.widgetContent {
+  color: gray;
+}

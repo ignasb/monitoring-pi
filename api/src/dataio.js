@@ -20,12 +20,12 @@ class DataIO {
 
     writeTemperature(temp) {
         const ts = this.getCurrentTimestamp();
-        this.writeLineToFile(this.TEMPERATURE_PATH,`${ts} ${temp}`);
+        this.writeLineToFile(`${__dirname}/${this.TEMPERATURE_PATH}`,`${ts} ${temp}`);
     }
 
     writeMemory(ram) {
         const ts = this.getCurrentTimestamp();
-        this.writeLineToFile(this.RAM_PATH, `${ts} ${ram}`);
+        this.writeLineToFile(`${__dirname}/${this.RAM_PATH}`, `${ts} ${ram}`);
     }
 
     readTemperature(callback) {
