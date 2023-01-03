@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
 import * as React from 'react';
 import Widget from './components/widget/Widget';
 
@@ -31,7 +31,9 @@ function App() {
   }, []);
 
   return (
-      <Widget views={['table']} data={temperatureData} />
+      <div className={styles.app}>
+        <Widget views={['table']} data={temperatureData} />
+      </div>
   );
 }
 

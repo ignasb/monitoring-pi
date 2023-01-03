@@ -1,0 +1,10 @@
+:root {
+  --main-font: font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  --body-bg: #FFF;
+  --body-secondary-bg: #E9ECEF;
+
+  --primary: rgb(13, 110, 253);
+}

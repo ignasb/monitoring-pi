@@ -1,0 +1,45 @@
+.dropdown {
+  position: relative;
+}
+
+.selection {
+  padding: 0.25rem 0;
+  position: absolute;
+  background-color: #FFF;
+  border: 1px solid rgb(80, 80, 80);
+  border-radius: 4px;
+  top: 32px;
+  width: 80px;
+  margin: 0.25rem 0.125rem;
+  user-select: none;
+  font-family: var(--main-font);
+  color: rgb(33, 37, 41);
+}
+
+.selection li {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0.2rem 0;
+}
+
+.selectionActive {
+  background-color: #EFEFEF;
+}
+
+.selection li:hover {
+  cursor: pointer;
+}
+
+.selection li:active {
+  background-color: var(--primary);
+  color: #FFF;
+}
+
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

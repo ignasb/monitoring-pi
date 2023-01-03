@@ -1,36 +1,38 @@
-import Table from '../Table';
-import styles from './Widget.module.css';
-import * as React from 'react';
+import Dropdown from "../dropdown/Dropdown";
+import Table from "../table/Table";
+import styles from "./Widget.module.css";
+import * as React from "react";
 
 const Widget = ({ views, data }) => {
-  const availableViews = {
-    table: 'Table',
-    lineChart: 'Line Chart',
-    barChart: 'Bar Chart',
-  };
-  const [view, setView] = React.useState(Object.keys(availableViews)[0]);
+  const availableViews = [
+    {label: "Table", value: "table"},
+    {label: "Line Chart", value: "lineChart"},
+    {label: "Bar Chart", value: "barChart"},
+  ];
+  const [view, setView] = React.useState(availableViews[0]);
   const handleViewChange = (selectedView) => {
     setView(selectedView);
   };
-  
+
   return (
     <div className={styles.widget}>
       <div className={styles.widgetToolbar}>
-        <select onChange={(e) => handleViewChange(e.target.value)}>
-          {Object.keys(availableViews)
-            .map((k, i) => <option key={i} value={k}>{availableViews[k]}</option>)
-          }
-        </select>
+        <Dropdown 
+          title={'Change view'}
+          items={availableViews}
+          selectedItem={view}
+          handleSelect={handleViewChange}
+        />
       </div>
       <div className={styles.widgetContent}>
-          {view === 'table' &&
+          {view.value === "table" &&
             <Table {...data} />
           }
-          {view === 'lineChart' &&
-            'Line Chart not implemented'
+          {view.value === "lineChart" &&
+            "Line Chart not implemented"
           }
-          {view === 'barChart' &&
-            'Bar Chart not implemented'
+          {view.value === "barChart" &&
+            "Bar Chart not implemented"
           }
       </div>
     </div>
